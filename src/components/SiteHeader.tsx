@@ -48,9 +48,9 @@ export function SiteHeader() {
           to="/"
           style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}
         >
-          <img src="/pandora-logo.png" alt="Pandora" style={{ height: '20px', objectFit: 'contain' }} />
+          <img src="./pandora-logo.png" alt="Pandora" style={{ height: '20px', objectFit: 'contain' }} />
           <div style={{ width: 1, height: 16, background: 'var(--color-border)', flexShrink: 0 }} />
-          <img src="/tarento-logo.png" alt="Tarento" style={{ height: '14px', objectFit: 'contain' }} />
+          <img src="./tarento-logo.png" alt="Tarento" style={{ height: '14px', objectFit: 'contain' }} />
         </Link>
 
         {/* Separator */}
