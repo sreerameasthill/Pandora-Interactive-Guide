@@ -1,0 +1,1 @@
+import{r as t}from"./index-Vp66VRMP.js";function o(){const s=t.useRef(null);return t.useEffect(()=>{const e=s.current;if(!e)return;const r=new IntersectionObserver(([n])=>{n.isIntersecting&&(e.classList.add("reveal-in"),r.disconnect())},{threshold:.1});return r.observe(e),()=>r.disconnect()},[]),s}export{o as u};
