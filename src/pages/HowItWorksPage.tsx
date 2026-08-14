@@ -28,7 +28,7 @@ export function HowItWorksPage() {
             <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)' }}>
               <div style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-muted-foreground)', marginBottom: '1rem', letterSpacing: '0.05em' }}>1. Event Inputs</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                {['Order Events', 'Sales Events', 'Warehouse Events', 'Shipment Events', 'Delivery Events'].map(evt => (
+                {['Order Events', 'Receipt Events', 'Warehouse Events', 'Shipment Events', 'Delivery Events'].map(evt => (
                   <span key={evt} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--color-stone)', padding: '0.5rem 1rem', borderRadius: '2rem', fontSize: '0.9375rem', color: 'var(--color-ink)', border: '1px solid var(--color-border)' }}>
                     <Activity size={14} color="var(--color-accent-blue)" /> {evt}
                   </span>
