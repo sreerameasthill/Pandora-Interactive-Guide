@@ -4,6 +4,7 @@ export type NodeCategory = 'production' | 'dc' | '3pl' | 'ecom' | 'store'
 export interface SupplyNode {
   id: string
   name: string
+  shortName: string
   city: string
   category: NodeCategory
   role: string
@@ -19,6 +20,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'GEMOPOLIS',
     name: 'Bangkok',
+    shortName: 'Bangkok',
     city: 'Bangkok, Thailand',
     category: 'production',
     role: 'Manufacturing site',
@@ -31,6 +33,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'LAMPHUN',
     name: 'Lamphun',
+    shortName: 'Lamphun',
     city: 'Northern Thailand',
     category: 'production',
     role: 'Manufacturing site',
@@ -43,6 +46,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'BINH_DUONG',
     name: 'Binh Duong / Ho Chi Minh City region',
+    shortName: 'Vietnam',
     city: 'Vietnam',
     category: 'production',
     role: 'Manufacturing site',
@@ -55,6 +59,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'TDC',
     name: 'Thailand Distribution Centre (TDC)',
+    shortName: 'Thailand DC',
     city: 'Bangkok, Thailand',
     category: 'dc',
     role: 'Central global distribution centre',
@@ -67,6 +72,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'EDC',
     name: 'Europe Distribution Centre (EDC)',
+    shortName: 'Europe DC',
     city: 'Hamburg, Germany',
     category: 'dc',
     role: 'Europe distribution centre',
@@ -79,6 +85,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'USDC',
     name: 'United States Distribution Centre (USDC)',
+    shortName: 'US DC',
     city: 'Columbus, Ohio',
     category: 'dc',
     role: 'US distribution centre',
@@ -91,6 +98,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'UKDC',
     name: 'United Kingdom Distribution Centre (UKDC)',
+    shortName: 'UK DC',
     city: 'London, UK',
     category: 'dc',
     role: 'UK distribution centre',
@@ -103,6 +111,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'LIFUNG_CN',
     name: 'Li & Fung',
+    shortName: '3PL China',
     city: 'Shanghai, China',
     category: '3pl',
     role: 'Third-party logistics — APAC',
@@ -115,6 +124,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'PFS',
     name: 'PFS — eCom Warehouse',
+    shortName: 'eCom USA',
     city: 'Memphis, USA',
     category: 'ecom',
     role: 'E-commerce fulfilment partner',
@@ -127,6 +137,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'BRAZIL',
     name: 'Brazil DC',
+    shortName: 'Brazil',
     city: 'São Paulo, Brazil',
     category: '3pl',
     role: 'LATAM regional 3PL',
@@ -139,6 +150,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'STORE_EU',
     name: 'Stores — Europe',
+    shortName: 'Europe Stores',
     city: 'Paris, France',
     category: 'store',
     role: 'Concept, outlet and wholesale',
@@ -151,6 +163,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'STORE_US',
     name: 'Stores — US',
+    shortName: 'US Stores',
     city: 'New York, USA',
     category: 'store',
     role: 'Concept, outlet and wholesale',
@@ -163,6 +176,7 @@ export const NODES: SupplyNode[] = [
   {
     id: 'STORE_UK',
     name: 'Stores — UK',
+    shortName: 'UK Stores',
     city: 'Manchester, UK',
     category: 'store',
     role: 'Concept, outlet and wholesale',

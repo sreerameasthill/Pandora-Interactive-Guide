@@ -315,7 +315,7 @@ export function SupplyChainExplorer() {
                   cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.375rem'
                 }}
               >
-                Arrive at {activeNode.name.split(' ')[0]} <ArrowRight size={14} />
+                Arrive at {activeNode.shortName} <ArrowRight size={14} />
               </button>
             ) : currentNode.downstream.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -335,7 +335,7 @@ export function SupplyChainExplorer() {
                       onMouseEnter={e => e.currentTarget.style.background = 'var(--color-stone)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'white'}
                     >
-                      <span>Ship to {destNode.name.split(' ')[0]}</span>
+                      <span>Ship to {destNode.shortName}</span>
                       <ArrowRight size={12} color="var(--color-muted-foreground)" />
                     </button>
                   )
