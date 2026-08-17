@@ -1,7 +1,7 @@
 import { PageShell } from '../components/PageShell'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Settings, Activity, Box, Truck, FileText } from 'lucide-react'
-
+import { Flowchart } from '../components/Flowchart'
 export function HowItWorksPage() {
   return (
     <PageShell
@@ -11,65 +11,38 @@ export function HowItWorksPage() {
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
 
-        {/* Section: The Core Principle */}
+        {/* Section: Data Flow */}
         <section>
-          <div style={{ padding: '2rem', background: 'var(--color-ink)', color: 'white', borderRadius: '0.75rem', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-accent-blue-soft)' }}>The Golden Rule</h2>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.5, margin: 0 }}>
-              IIS does not store transactions. It <strong>DERIVES</strong> inventory state from events flowing across Pandora's source systems.
-            </p>
-          </div>
+          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>Data Flow Architecture</h2>
+          <Flowchart />
+        </section>
 
-          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>The Derivation Pipeline</h2>
+        {/* Section: Single Source of Truth */}
+        <section>
+          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>IIS: The Single Source of Truth</h2>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', background: 'var(--color-stone)', padding: '2.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--color-ink)', margin: 0 }}>
+              IIS serves as the centralized "Single Source of Truth" for inventory visibility across Pandora's global supply chain. It bridges the critical gap between physical inventory movements happening on warehouse floors and store registers, and the digital sales channels that customers interact with every day.
+            </p>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--color-muted-foreground)', margin: 0 }}>
+              Without IIS, each downstream system would need to independently track and reconcile inventory from dozens of source systems — creating data inconsistencies, overselling risks, and operational blind spots. IIS eliminates that complexity by acting as the authoritative, always-current record.
+            </p>
             
-            {/* Step 1: Event Inputs */}
-            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)' }}>
-              <div style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-muted-foreground)', marginBottom: '1rem', letterSpacing: '0.05em' }}>1. Event Inputs</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                {['Order Events', 'Receipt Events', 'Warehouse Events', 'Shipment Events', 'Delivery Events'].map(evt => (
-                  <span key={evt} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--color-stone)', padding: '0.5rem 1rem', borderRadius: '2rem', fontSize: '0.9375rem', color: 'var(--color-ink)', border: '1px solid var(--color-border)' }}>
-                    <Activity size={14} color="var(--color-accent-blue)" /> {evt}
-                  </span>
-                ))}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+              <div style={{ borderLeft: '4px solid var(--color-accent-blue)', padding: '1.5rem', background: 'white', border: '1px solid var(--color-border)', borderRadius: '0 0.5rem 0.5rem 0' }}>
+                <h4 style={{ fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>Distribution Centers</h4>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--color-muted-foreground)', margin: 0 }}>Warehouse inventory from WMS systems like Reflex and GXO</p>
+              </div>
+              <div style={{ borderLeft: '4px solid var(--color-accent-blue)', padding: '1.5rem', background: 'white', border: '1px solid var(--color-border)', borderRadius: '0 0.5rem 0.5rem 0' }}>
+                <h4 style={{ fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>3PL Partners</h4>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--color-muted-foreground)', margin: 0 }}>Third-party logistics inventory via PDA integrations</p>
+              </div>
+              <div style={{ borderLeft: '4px solid var(--color-accent-blue)', padding: '1.5rem', background: 'white', border: '1px solid var(--color-border)', borderRadius: '0 0.5rem 0.5rem 0' }}>
+                <h4 style={{ fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>Retail Stores</h4>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--color-muted-foreground)', margin: 0 }}>Real-time POS data from mPOS, KWI, and Salesforce</p>
               </div>
             </div>
-
-            <div style={{ display: 'flex', justifyContent: 'center' }}><ArrowRight size={24} color="var(--color-muted-foreground)" /></div>
-
-            {/* Step 2: Derivation Engine */}
-            <div style={{ background: 'var(--color-accent-blue)', padding: '1.5rem', borderRadius: '0.5rem', color: 'white', textAlign: 'center' }}>
-              <div style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>2. Processing</div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>
-                <Settings size={24} /> Inventory Derivation Engine
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'center' }}><ArrowRight size={24} color="var(--color-muted-foreground)" /></div>
-
-            {/* Step 3: IIS -> Output Views */}
-            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)' }}>
-              <div style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-muted-foreground)', marginBottom: '1rem', letterSpacing: '0.05em' }}>3. IIS Output Views</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
-                <div style={{ border: '1px solid var(--color-border)', padding: '1.25rem', borderRadius: '0.5rem' }}>
-                  <Box size={20} color="var(--color-accent-blue)" style={{ marginBottom: '0.75rem' }} />
-                  <h4 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>1. On-Hand Inventory</h4>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-muted-foreground)', margin: 0 }}>Stock physically available at a location.</p>
-                </div>
-                <div style={{ border: '1px solid var(--color-border)', padding: '1.25rem', borderRadius: '0.5rem' }}>
-                  <Truck size={20} color="var(--color-accent-blue)" style={{ marginBottom: '0.75rem' }} />
-                  <h4 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>2. In-Transit Inventory</h4>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-muted-foreground)', margin: 0 }}>Stock moving between locations.</p>
-                </div>
-                <div style={{ border: '1px solid var(--color-border)', padding: '1.25rem', borderRadius: '0.5rem' }}>
-                  <FileText size={20} color="var(--color-accent-blue)" style={{ marginBottom: '0.75rem' }} />
-                  <h4 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.5rem' }}>3. Order Tracking</h4>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-muted-foreground)', margin: 0 }}>B2B order lifecycle across the network.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 
