@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 const NAV_LINKS = [
   { to: '/' as const,                        label: 'Overview' },
+  { to: '/nexus-vs-iis' as const,            label: 'IIS vs NEXUS' },
   { to: '/how-iis-works' as const,           label: 'How IIS Works' },
   { to: '/supply-chain' as const,            label: 'Supply Chain Map' },
   { to: '/architecture' as const,            label: 'Systems & Architecture' },

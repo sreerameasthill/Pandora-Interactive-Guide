@@ -83,59 +83,30 @@ export function OverviewPage() {
           </div>
         </section>
 
-        {/* Section: Why IIS Exists */}
+        {/* Section: What is IIS */}
         <section>
-          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>Why IIS Exists</h2>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-            {/* Before */}
-            <div style={{ padding: '2rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem', background: 'var(--color-stone)' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-ink)' }}>Before IIS (Fragmented Systems)</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9375rem', color: 'var(--color-muted-foreground)' }}><Server size={16} /> Different ERP systems across regions</li>
-                <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9375rem', color: 'var(--color-muted-foreground)' }}><Building2 size={16} /> Different WMS systems across DCs</li>
-                <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9375rem', color: 'var(--color-muted-foreground)' }}><Store size={16} /> Different POS systems across markets</li>
-                <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.9375rem', color: 'var(--color-muted-foreground)' }}><MapPin size={16} /> Fragmented inventory visibility</li>
-              </ul>
-              
-              <h4 style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Resulting Business Problems</h4>
-              <ul style={{ paddingLeft: '1.25rem', margin: 0, color: 'var(--color-muted-foreground)', fontSize: '0.9375rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <li>No global inventory view</li>
-                <li>Difficult reconciliation across systems</li>
-                <li>Inconsistent inventory definitions</li>
-                <li>Limited omni-channel support</li>
-              </ul>
-            </div>
+          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>What is IIS</h2>
+          <div style={{ padding: '2rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem', background: 'var(--color-stone)' }}>
+            <p style={{ fontSize: '1.125rem', color: 'var(--color-ink)', margin: 0, lineHeight: 1.6 }}>
+              The <strong>Inventory Information Service (IIS)</strong> is Pandora's centralized integration hub for inventory — a middleware layer that consolidates data from Distribution Centers, 3PLs, and Stores into a single, unified, real-time view of availability.
+            </p>
+          </div>
+        </section>
 
-            {/* After */}
-            <div style={{ padding: '2rem', border: '2px solid var(--color-accent-blue)', borderRadius: '0.75rem', background: 'white' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-accent-blue)' }}>After IIS (Unified Pipeline)</h3>
-              <p style={{ fontSize: '0.9375rem', color: 'var(--color-muted-foreground)', marginBottom: '1.5rem' }}>
-                A single source of truth across the entire network.
-              </p>
-              
-              <div style={{ background: 'var(--color-stone)', padding: '1.5rem', borderRadius: '0.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.8125rem', fontWeight: 600, padding: '0.25rem 0.5rem', background: 'white', borderRadius: '4px', border: '1px solid var(--color-border)' }}>ERP</span>
-                  <span style={{ fontSize: '0.8125rem', fontWeight: 600, padding: '0.25rem 0.5rem', background: 'white', borderRadius: '4px', border: '1px solid var(--color-border)' }}>POS</span>
-                  <span style={{ fontSize: '0.8125rem', fontWeight: 600, padding: '0.25rem 0.5rem', background: 'white', borderRadius: '4px', border: '1px solid var(--color-border)' }}>WMS</span>
-                  <span style={{ fontSize: '0.8125rem', fontWeight: 600, padding: '0.25rem 0.5rem', background: 'white', borderRadius: '4px', border: '1px solid var(--color-border)' }}>TMS</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}><ArrowRight size={16} color="var(--color-muted-foreground)" /></div>
-                <div style={{ textAlign: 'center', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-ink)' }}>Nexus (Event Bus)</div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}><ArrowRight size={16} color="var(--color-muted-foreground)" /></div>
-                <div style={{ textAlign: 'center', fontSize: '1rem', fontWeight: 700, color: 'var(--color-accent-blue)' }}>IIS</div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}><ArrowRight size={16} color="var(--color-muted-foreground)" /></div>
-                <div style={{ textAlign: 'center', fontSize: '0.9375rem', fontWeight: 600, color: 'var(--color-ink)' }}>Unified Inventory Visibility</div>
-              </div>
-            </div>
+        {/* Section: What is Nexus */}
+        <section>
+          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>What is Nexus</h2>
+          <div style={{ padding: '2rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem', background: 'white' }}>
+            <p style={{ fontSize: '1.125rem', color: 'var(--color-ink)', margin: 0, lineHeight: 1.6 }}>
+              <strong>Nexus</strong> is Pandora's global Event-Driven Integration Platform (built on Kafka/Azure Service Bus).
+            </p>
           </div>
         </section>
 
         {/* Footer Navigation */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '2rem', borderTop: '1px solid var(--color-border)' }}>
           <Link 
-            to="/how-iis-works"
+            to="/nexus-vs-iis"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               background: 'var(--color-ink)', color: 'white',
@@ -146,7 +117,7 @@ export function OverviewPage() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Next: How IIS Works <ArrowRight size={16} />
+            Next: IIS vs NEXUS <ArrowRight size={16} />
           </Link>
         </div>
       </div>

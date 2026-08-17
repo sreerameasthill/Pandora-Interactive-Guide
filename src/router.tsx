@@ -1,5 +1,6 @@
 import { Router, Route, RootRoute, Outlet, createHashHistory } from '@tanstack/react-router'
 import { OverviewPage } from './pages/OverviewPage'
+import { NexusVsIISPage } from './pages/NexusVsIISPage'
 import { HowItWorksPage } from './pages/HowItWorksPage'
 import { ArchitecturePage } from './pages/ArchitecturePage'
 import { ConsumersPage } from './pages/ConsumersPage'
@@ -20,6 +21,12 @@ const howItWorksRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/how-iis-works',
   component: HowItWorksPage,
+})
+
+const nexusVsIisRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/nexus-vs-iis',
+  component: NexusVsIISPage,
 })
 
 const architectureRoute = new Route({
@@ -48,6 +55,7 @@ const supplyChainRoute = new Route({
 
 const routeTree = rootRoute.addChildren([
   overviewRoute,
+  nexusVsIisRoute,
   supplyChainRoute,
   howItWorksRoute,
   architectureRoute,
