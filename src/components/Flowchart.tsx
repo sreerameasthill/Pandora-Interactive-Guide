@@ -4,7 +4,9 @@ type FlowNode = { x: number; y: number; label: string; isCenter?: boolean }
 
 const NODES: Record<string, FlowNode> = {
   manu: { x: 50, y: 10, label: 'MANU\n(Production)' },
-  pos: { x: 50, y: 35, label: 'POS\n(Stores)' },
+  usdc: { x: 20, y: 35, label: 'US DC' },
+  ukdc: { x: 50, y: 35, label: 'UK DC' },
+  tdc: { x: 80, y: 35, label: 'Thailand DC\n(TDC)' },
   crm: { x: 15, y: 65, label: 'CRM\n(SAP, Salesforce, etc)' },
   iis: { x: 50, y: 65, label: 'IIS', isCenter: true },
   oms: { x: 85, y: 65, label: 'OMS\n(Order Management)' },
@@ -13,9 +15,15 @@ const NODES: Record<string, FlowNode> = {
 }
 
 const CONNECTIONS = [
-  { from: 'manu', to: 'pos' },
-  { from: 'pos', to: 'crm' },
-  { from: 'pos', to: 'iis' },
+  { from: 'manu', to: 'usdc' },
+  { from: 'manu', to: 'ukdc' },
+  { from: 'manu', to: 'tdc' },
+  { from: 'usdc', to: 'crm' },
+  { from: 'usdc', to: 'iis' },
+  { from: 'ukdc', to: 'crm' },
+  { from: 'ukdc', to: 'iis' },
+  { from: 'tdc', to: 'crm' },
+  { from: 'tdc', to: 'iis' },
   { from: 'crm', to: 'iis' },
   { from: 'crm', to: 'oms' },
   { from: 'iis', to: 'tms' },
