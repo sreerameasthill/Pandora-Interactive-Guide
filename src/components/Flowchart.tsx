@@ -24,7 +24,7 @@ const CONNECTIONS = [
 
 export function Flowchart() {
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px', background: 'var(--color-stone)', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+    <div style={{ position: 'relative', width: '100%', height: '400px', background: 'var(--color-stone)', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
       <style>{`
         @keyframes flowAnim {
           from { stroke-dashoffset: 24; }
@@ -35,31 +35,22 @@ export function Flowchart() {
           stroke-width: 2.5;
           stroke-dasharray: 6 6;
           animation: flowAnim 1s linear infinite;
-          fill: none;
         }
       `}</style>
 
       {/* SVG for lines */}
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
-        {/* Define arrow marker */}
-        <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-accent-blue)" />
-          </marker>
-        </defs>
-        
         {CONNECTIONS.map((conn, i) => {
           const from = NODES[conn.from as keyof typeof NODES]
           const to = NODES[conn.to as keyof typeof NODES]
           
-          // Calculate an offset so the line doesn't start exactly at the center (behind the box)
-          // Simple straight line path
-          const path = `M ${from.x}% ${from.y}% L ${to.x}% ${to.y}%`
-          
           return (
-            <path 
+            <line 
               key={i} 
-              d={path} 
+              x1={`${from.x}%`}
+              y1={`${from.y}%`}
+              x2={`${to.x}%`}
+              y2={`${to.y}%`}
               className="animated-path" 
             />
           )
@@ -78,14 +69,14 @@ export function Flowchart() {
             background: node.isCenter ? 'var(--color-accent-blue)' : 'white',
             color: node.isCenter ? 'white' : 'var(--color-ink)',
             border: node.isCenter ? 'none' : '1px solid var(--color-border)',
-            padding: node.isCenter ? '1.5rem 2rem' : '0.75rem 1rem',
+            padding: node.isCenter ? '1rem 1.5rem' : '0.5rem 0.75rem',
             borderRadius: '0.5rem',
             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
             textAlign: 'center',
             zIndex: 10,
             whiteSpace: 'pre-line',
             fontWeight: node.isCenter ? 700 : 600,
-            fontSize: node.isCenter ? '1.5rem' : '0.875rem',
+            fontSize: node.isCenter ? '1.25rem' : '0.75rem',
             lineHeight: 1.2
           }}
         >
