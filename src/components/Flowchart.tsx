@@ -9,11 +9,11 @@ const NODES: Record<string, FlowNode> = {
   tdc: { x: 50, y: 35, label: 'Thailand\nDC' },
   edc: { x: 67, y: 35, label: 'Europe\nDC' },
   brazildc: { x: 84, y: 35, label: 'Brazil\nDC' },
-  oms: { x: 15, y: 65, label: 'OMS\n(Order Mgt)' },
-  crm: { x: 35, y: 65, label: 'CRM\n(SAP, Salesforce)' },
-  iis: { x: 70, y: 65, label: 'IIS', isCenter: true },
-  tms: { x: 55, y: 95, label: 'TMS\n(Transportation)' },
-  demand: { x: 85, y: 95, label: 'Demand Planning\n(O9)' },
+  oms: { x: 55, y: 95, label: 'OMS\n(Order Mgt)' },
+  crm: { x: 25, y: 65, label: 'CRM\n(SAP, Salesforce)' },
+  iis: { x: 75, y: 65, label: 'IIS', isCenter: true },
+  tms: { x: 75, y: 95, label: 'TMS\n(Transportation)' },
+  demand: { x: 95, y: 95, label: 'Demand Planning\n(O9)' },
 }
 
 const CONNECTIONS = [
@@ -37,8 +37,8 @@ const CONNECTIONS = [
   { from: 'brazildc', to: 'iis' },
   // CRM to Others
   { from: 'crm', to: 'iis' },
-  { from: 'crm', to: 'oms' },
   // IIS to Others
+  { from: 'iis', to: 'oms' },
   { from: 'iis', to: 'tms' },
   { from: 'iis', to: 'demand' },
 ]
