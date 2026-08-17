@@ -19,14 +19,14 @@ export function HowItWorksPage() {
 
         {/* Section: Single Source of Truth */}
         <section>
-          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>IIS: The Single Source of Truth</h2>
+          <h2 className="heading" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-ink)' }}>What IIS does</h2>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--color-ink)', margin: 0 }}>
-              IIS serves as the centralized "Single Source of Truth" for inventory visibility across Pandora's global supply chain. It bridges the critical gap between physical inventory movements happening on warehouse floors and store registers, and the digital sales channels that customers interact with every day.
+              IIS is the central hub for all inventory data across Pandora. It connects physical stock (in warehouses and stores) to our digital sales channels.
             </p>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--color-muted-foreground)', margin: 0 }}>
-              Without IIS, each downstream system would need to independently track and reconcile inventory from dozens of source systems — creating data inconsistencies, overselling risks, and operational blind spots. IIS eliminates that complexity by acting as the authoritative, always-current record.
+              Instead of having every system guess how much stock we have, IIS provides one true, real-time number. This prevents overselling and keeps our data accurate across all these sources:
             </p>
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
