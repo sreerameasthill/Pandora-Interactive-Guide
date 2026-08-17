@@ -4,28 +4,41 @@ type FlowNode = { x: number; y: number; label: string; isCenter?: boolean }
 
 const NODES: Record<string, FlowNode> = {
   manu: { x: 50, y: 10, label: 'MANU\n(Production)' },
-  usdc: { x: 20, y: 35, label: 'US DC' },
-  ukdc: { x: 50, y: 35, label: 'UK DC' },
-  tdc: { x: 80, y: 35, label: 'Thailand DC\n(TDC)' },
-  crm: { x: 15, y: 65, label: 'CRM\n(SAP, Salesforce, etc)' },
-  iis: { x: 50, y: 65, label: 'IIS', isCenter: true },
-  oms: { x: 85, y: 65, label: 'OMS\n(Order Management)' },
-  tms: { x: 30, y: 95, label: 'TMS\n(Transportation)' },
-  demand: { x: 70, y: 95, label: 'Demand Planning\n(O9)' },
+  usdc: { x: 16, y: 35, label: 'US DC' },
+  ukdc: { x: 33, y: 35, label: 'UK DC' },
+  tdc: { x: 50, y: 35, label: 'Thailand\nDC' },
+  edc: { x: 67, y: 35, label: 'Europe\nDC' },
+  brazildc: { x: 84, y: 35, label: 'Brazil\nDC' },
+  oms: { x: 15, y: 65, label: 'OMS\n(Order Mgt)' },
+  crm: { x: 35, y: 65, label: 'CRM\n(SAP, Salesforce)' },
+  iis: { x: 70, y: 65, label: 'IIS', isCenter: true },
+  tms: { x: 55, y: 95, label: 'TMS\n(Transportation)' },
+  demand: { x: 85, y: 95, label: 'Demand Planning\n(O9)' },
 }
 
 const CONNECTIONS = [
+  // MANU to DCs
   { from: 'manu', to: 'usdc' },
   { from: 'manu', to: 'ukdc' },
   { from: 'manu', to: 'tdc' },
+  { from: 'manu', to: 'edc' },
+  { from: 'manu', to: 'brazildc' },
+  // DCs to CRM
   { from: 'usdc', to: 'crm' },
-  { from: 'usdc', to: 'iis' },
   { from: 'ukdc', to: 'crm' },
-  { from: 'ukdc', to: 'iis' },
   { from: 'tdc', to: 'crm' },
+  { from: 'edc', to: 'crm' },
+  { from: 'brazildc', to: 'crm' },
+  // DCs to IIS
+  { from: 'usdc', to: 'iis' },
+  { from: 'ukdc', to: 'iis' },
   { from: 'tdc', to: 'iis' },
+  { from: 'edc', to: 'iis' },
+  { from: 'brazildc', to: 'iis' },
+  // CRM to Others
   { from: 'crm', to: 'iis' },
   { from: 'crm', to: 'oms' },
+  // IIS to Others
   { from: 'iis', to: 'tms' },
   { from: 'iis', to: 'demand' },
 ]
