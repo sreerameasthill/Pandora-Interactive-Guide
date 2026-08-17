@@ -18,16 +18,16 @@ export interface SupplyNode {
 
 export const NODES: SupplyNode[] = [
   {
-    id: 'GEMOPOLIS',
-    name: 'Bangkok',
-    shortName: 'Bangkok',
-    city: 'Bangkok, Thailand',
+    id: 'MANU',
+    name: 'MANU (production)',
+    shortName: 'MANU',
+    city: 'Global Manufacturing',
     category: 'production',
     role: 'Manufacturing site',
     inventoryType: 'Finished goods (FG)',
     systems: ['ERP', 'WMS'],
     upstream: [],
-    downstream: ['TDC'],
+    downstream: ['TDC', 'EDC', 'USDC', 'UKDC', 'BRAZIL'],
     lat: 13.7, lon: 100.7,
   },
   {
@@ -40,7 +40,7 @@ export const NODES: SupplyNode[] = [
     inventoryType: 'Finished goods (FG)',
     systems: ['ERP', 'WMS'],
     upstream: [],
-    downstream: ['TDC'],
+    downstream: ['TDC', 'EDC', 'USDC', 'UKDC', 'BRAZIL'],
     lat: 18.6, lon: 99.0,
   },
   {
@@ -53,7 +53,7 @@ export const NODES: SupplyNode[] = [
     inventoryType: 'Finished goods (FG)',
     systems: ['ERP', 'WMS'],
     upstream: [],
-    downstream: ['TDC'],
+    downstream: ['TDC', 'EDC', 'USDC', 'UKDC', 'BRAZIL'],
     lat: 11.0, lon: 106.7,
   },
   {
@@ -65,8 +65,8 @@ export const NODES: SupplyNode[] = [
     role: 'Central global distribution centre',
     inventoryType: 'On-hand & in-transit',
     systems: ['ERP', 'WMS', 'TMS'],
-    upstream: ['GEMOPOLIS', 'LAMPHUN', 'BINH_DUONG'],
-    downstream: ['EDC', 'USDC', 'UKDC', 'BRAZIL', 'LIFUNG_CN'],
+    upstream: ['MANU', 'LAMPHUN', 'BINH_DUONG'],
+    downstream: ['EDC', 'USDC', 'UKDC', 'BRAZIL', 'LIFUNG_CN', 'PFS', 'STORE_EU', 'STORE_US', 'STORE_UK'],
     lat: 12.5, lon: 101.5,
   },
   {
@@ -78,8 +78,8 @@ export const NODES: SupplyNode[] = [
     role: 'Europe distribution centre',
     inventoryType: 'On-hand & in-transit',
     systems: ['ERP', 'WMS'],
-    upstream: ['TDC'],
-    downstream: ['LIFUNG_CN', 'STORE_EU', 'UKDC'],
+    upstream: ['TDC', 'MANU', 'LAMPHUN', 'BINH_DUONG'],
+    downstream: ['LIFUNG_CN', 'STORE_EU', 'UKDC', 'TDC', 'USDC'],
     lat: 53.5, lon: 10.0,
   },
   {
@@ -91,8 +91,8 @@ export const NODES: SupplyNode[] = [
     role: 'US distribution centre',
     inventoryType: 'On-hand & in-transit',
     systems: ['ERP', 'WMS'],
-    upstream: ['TDC'],
-    downstream: ['PFS', 'STORE_US'],
+    upstream: ['TDC', 'MANU', 'LAMPHUN', 'BINH_DUONG'],
+    downstream: ['PFS', 'STORE_US', 'TDC', 'EDC', 'UKDC'],
     lat: 40.0, lon: -83.0,
   },
   {
@@ -104,8 +104,8 @@ export const NODES: SupplyNode[] = [
     role: 'UK distribution centre',
     inventoryType: 'On-hand & in-transit',
     systems: ['ERP', 'WMS'],
-    upstream: ['TDC', 'EDC'],
-    downstream: ['STORE_UK'],
+    upstream: ['TDC', 'EDC', 'MANU', 'LAMPHUN', 'BINH_DUONG'],
+    downstream: ['STORE_UK', 'TDC', 'EDC', 'USDC'],
     lat: 51.5, lon: -0.1,
   },
   {
@@ -130,7 +130,7 @@ export const NODES: SupplyNode[] = [
     role: 'E-commerce fulfilment partner',
     inventoryType: 'eCom on-hand',
     systems: ['OMS', 'WMS'],
-    upstream: ['USDC'],
+    upstream: ['USDC', 'TDC'],
     downstream: ['STORE_US'],
     lat: 35.1, lon: -90.0,
   },
@@ -143,8 +143,8 @@ export const NODES: SupplyNode[] = [
     role: 'LATAM regional 3PL',
     inventoryType: 'On-hand at 3PL',
     systems: ['WMS'],
-    upstream: ['TDC'],
-    downstream: [],
+    upstream: ['TDC', 'MANU', 'LAMPHUN', 'BINH_DUONG'],
+    downstream: ['STORE_US'],
     lat: -23.5, lon: -46.6,
   },
   {

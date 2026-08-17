@@ -77,23 +77,37 @@ function MapUpdater({ isFinished, currentNodeId, targetNodeId, phase }: {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export function SupplyChainExplorer() {
-  const [currentNodeId, setCurrentNodeId] = useState<string>('GEMOPOLIS')
+  const [currentNodeId, setCurrentNodeId] = useState<string>('MANU')
   const [targetNodeId, setTargetNodeId] = useState<string | null>(null)
   const [phase, setPhase] = useState<'on-hand' | 'in-transit'>('on-hand')
   const [isFinished, setIsFinished] = useState(false)
+  const [history, setHistory] = useState<string[]>([])
 
   const currentNode = NODE_MAP[currentNodeId]
   const targetNode = targetNodeId ? NODE_MAP[targetNodeId] : undefined
   const step = isFinished ? null : getJourneyStepData(currentNode, phase, targetNode)
 
   const handleRestart = () => {
-    setCurrentNodeId('GEMOPOLIS')
+    setCurrentNodeId('MANU')
     setTargetNodeId(null)
     setPhase('on-hand')
     setIsFinished(false)
+    setHistory([])
+  }
+
+  const handleBack = () => {
+    if (history.length > 0) {
+      const prev = history[history.length - 1]
+      setHistory(h => h.slice(0, -1))
+      setCurrentNodeId(prev)
+      setTargetNodeId(null)
+      setPhase('on-hand')
+      setIsFinished(false)
+    }
   }
 
   const handleShipTo = (destId: string) => {
+    setHistory(h => [...h, currentNodeId])
     setTargetNodeId(destId)
     setPhase('in-transit')
   }
@@ -132,10 +146,11 @@ export function SupplyChainExplorer() {
         width: 380, minWidth: 380, borderRight: '1px solid var(--color-border)',
         background: 'white', display: 'flex', flexDirection: 'column', zIndex: 10
       }}>
-        <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--color-border)', background: 'var(--color-stone)' }}>
+        <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--color-border)', background: 'var(--color-stone)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2 style={{ fontSize: '0.8125rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-muted-foreground)', margin: 0 }}>
             Inventory Journey Explorer
           </h2>
+          <button onClick={handleRestart} style={{ background: 'white', border: '1px solid var(--color-border)', padding: '0.25rem 0.75rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-ink)', cursor: 'pointer' }}>Restart</button>
         </div>
 
         <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -293,8 +308,11 @@ export function SupplyChainExplorer() {
             zIndex: 1000, pointerEvents: 'auto', border: '1px solid var(--color-border)',
             opacity: 1, transition: 'opacity 0.3s'
           }}>
-            <div style={{ fontSize: '0.6875rem', fontWeight: 700, textTransform: 'uppercase', color: CATEGORY_COLORS[activeNode.category], marginBottom: '0.25rem' }}>
-              {CATEGORY_LABELS[activeNode.category]}
+            <div style={{ fontSize: '0.6875rem', fontWeight: 700, textTransform: 'uppercase', color: CATEGORY_COLORS[activeNode.category], marginBottom: '0.25rem', display: 'flex', justifyContent: 'space-between' }}>
+              <span>{CATEGORY_LABELS[activeNode.category]}</span>
+              {history.length > 0 && phase !== 'in-transit' && (
+                <button onClick={handleBack} style={{ background: 'none', border: 'none', color: 'var(--color-muted-foreground)', cursor: 'pointer', textDecoration: 'underline', fontSize: '0.6875rem', padding: 0 }}>Back</button>
+              )}
             </div>
             <h4 style={{ fontSize: '1rem', fontWeight: 600, margin: '0 0 0.5rem 0', color: 'var(--color-ink)' }}>
               {activeNode.name}
